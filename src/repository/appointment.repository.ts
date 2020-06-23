@@ -1,4 +1,4 @@
-import { startOfHour, parseISO, isEqual } from 'date-fns';
+import { isEqual } from 'date-fns';
 import Appointment from '../models/appointment.model';
 
 class AppointmentRepository {
@@ -17,6 +17,10 @@ class AppointmentRepository {
   public findByDate(date: Date): Appointment | null {
     const appointmentFound = this.appointments.find(appointment => isEqual(date, appointment.date));
     return appointmentFound || null;
+  }
+
+  public all(): Appointment[] {
+    return this.appointments;
   }
 }
 
